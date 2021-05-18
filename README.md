@@ -1,5 +1,5 @@
 # How to run this kaewhomforreal project
-1.Download all "kaewhomforreal" file.
+1.Download all "kaewhomforreal" file. <br>
 2.Extract file.
 3.Open cmd and create virtual environment by $ conda create -n YOUR_ENVIRONMENT_NAME python=3.6
 4.Then activate that virtual environment by $ conda activate YOUR_ENVIRONMENT
