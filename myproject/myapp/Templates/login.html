@@ -1,0 +1,49 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href={% static "style.css" %}>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Rancho&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Raleway&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Qwigley&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@100&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Alice&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/gif/png" href="/static/Cho_index/khlogo.png">
+    <title>LOGIN</title>
+</head>
+<body>
+    <div class="Cw-login-grid">
+        <div class="Cw-login">
+            <img src="/static/Cho_index/khlogo.png">
+        </div>
+    </div>
+        <div class="main">
+            <div class="login-grid">
+                <div class="login-grid-border">
+                    <div class="loginpage">
+                        <h1>Login</h1>
+                        <form class="site-form" method = "POST">
+                            {{ form.as_p }}
+                            {% csrf_token %}
+                            <input type="submit" value="Sign in"> 
+                        </form>
+                        <a href="{% url 'customerregistration' %}{% if request.GET.next %}?next={{request.GET.next}}{% endif %}"><button>Register</button></a>
+                        {% if error %}
+                        <li style = "color:red">{{error}}</li>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>     
+        </div>
+    </div>
+  
+    
+</body>
+</html>

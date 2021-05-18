@@ -1,0 +1,51 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href={% static "style.css" %}>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Rancho&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Raleway&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Qwigley&display=swap" rel="stylesheet">
+
+    <title>ADMIN PRODUCT LIST</title>
+</head>
+<body>
+<a href="{% url 'adminhome' %}">Home</a> | <a href="{% url 'adminorderlist' %}">All Orders</a> | <a href="{% url 'adminproductlist' %}">All Products</a> | <a href="{% url 'adminproductcreate' %}" target="_blank">Add Product</a> | <a href="{% url 'index' %}" target="_blank">Visit site</a>   
+<div class="main">
+                  
+    <div class="mycart-table">
+        <div class="urcart">
+            <h3>All Product list</h3>
+        </div>        
+        <table>
+            <thead>
+                <tr>
+                    <th>SN</th>
+                    <th>Product Title</th>
+                    <th>model</th>
+                    <th>Image</th>
+                    <th>Price</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for p in allproducts %}
+                <tr>
+                    <td>{{forloop.counter}}</td>
+                    <td>{{p.brand}}</td>
+                    <td>{{p.model}}</td>
+                    <td><img src="{{p.image.url}}" style="height: 60px;" alt=""></td>
+                    <td>{{p.price}}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+</body>
+</html>

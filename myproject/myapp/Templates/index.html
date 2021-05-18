@@ -1,0 +1,217 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href={% static "style.css" %}>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Rancho&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Raleway&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Qwigley&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@100&display=swap" rel="stylesheet">
+    <script src="script.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <link rel="icon" type="image/gif/png" href="/static/Cho_index/khlogo.png">
+    
+    <title>index</title>
+</head>
+<body>
+
+    <div class="container">
+        
+        <header id="header">
+            <div class="top">
+                <div class="searchbar">
+                    <form action="{% url 'search' %}" method='get'>
+                        <input type="text" name='search' placeholder="Search" class='searchbox'>
+                        <button>Search</button>
+                    </form>
+                </div>
+                <div class="loginbar">
+                    {% if user.is_authenticated %}
+                    <li><p>Accout Name : {{user.username}}</p></li> 
+                    <li><a href= "{% url 'customerlogout' %}">Logout</a></li> 
+                    <li><a href= "{% url 'customerregistration' %}">Register</a></li> 
+                    <li><a class="addtocart" href="{% url 'mycart' %}"><img src="/static/carticon.png" alt="" width="20" height=auto></a></li>
+                    <li><a href= "{% url 'profile' %}"><img src="/static/profileicon.png" width="20" height=auto></a></li>
+                    {% else %}
+                    <div class="shopnow">
+                        <a href= "{% url 'customerlogin' %}">SHOP NOW</a>
+                    </div>
+                    {% endif %} 
+                </div>
+            </div>
+            
+            
+            <div class="Cw">
+                <a href="{% url 'index' %}"><img src="/static/Cho_index/khlogo.png"></a>
+            </div>
+        </header>  
+            
+        <nav class="navbar">
+              <ul>      
+                 <li><a class='index' href="{% url 'index' %}">Home <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span></a></li>
+                 <li><a class='navabout' href="#about">About <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span></a></li>
+                 <li><a class='allwatch' href="{% url 'category' %}">Store<span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span></a></li>
+                 <li><a class='contact' href="{% url 'contact' %}">Contact<span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span></a></li>
+                 <li><a class='fb' target="_blank" href="https://www.facebook.com/"><span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span><img src="/static/f.png"></a></li>
+                 <li><a class='ig' target="_blank" href="https://www.instagram.com/"><span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span><img src="/static/ig.png"></a></li>
+              <ul>
+        </nav>
+            
+        
+        
+            
+        <div class="main">
+            <div class="slider">
+                <div class="slides">
+                    <input type="radio" name="radio-btn" id="radio1">
+                    <input type="radio" name="radio-btn" id="radio2">
+                    <input type="radio" name="radio-btn" id="radio3">
+
+                    <div class="slide first"> 
+                        <img src="/static/Cho_index/kkhh.jpg" alt="">
+                    </div>
+                    <div class="slide"> 
+                        <img src="/static/Cho_index/storeindex.jpg" alt="">
+                    </div>
+                    <div class="slide"> 
+                        <img src="/static/Cho_index/char.jpg" alt="">
+                    </div>
+                </div>
+                <div class="navigation-auto">
+                    <div class="auto-btn1"></div>
+                    <div class="auto-btn2"></div>
+                    <div class="auto-btn3"></div>
+                </div>
+
+                <div class="navigation-manual">
+                    <label for="radio1" class="manual-btn"></label>
+                    <label for="radio2" class="manual-btn"></label>
+                    <label for="radio3" class="manual-btn"></label>
+                </div>
+            </div>
+            <div class="about" id='about'>
+                <div class="pic-about" data-aos="fade-right">
+                    <img src="/static/Cho_index/abb.jpg" alt="">
+                </div>
+                <div class="text-about" data-aos="fade-left">
+                    <h2>ABOUT "Kaewhom"</h2>
+                    Kaewhom is made from shattered glass. We changed its appearance <br> 
+                    and use it for essential oil absorbing which can repel bugs or mosquitos. <br> 
+                    Moreover, It can be used for aroma therapy that makes your home smells good <br> 
+                    and makes you relax. Also, its packaging can be used for decoration as well.
+                    <a href="#history"><button>Read more</button></a>
+                </div>
+            </div>
+
+            <div class="history" id="history">
+                <h2>History</h2>
+                Thailand is located on tropical zone. With a lot of water sources and hot temperature , <br> 
+                It is proper to be bugs and mosquitos resident. So bugs and mosquitos have become a problem in every house. <br>
+                In Thailand, there are a lot of shattered glass left from industry but to get rid of it is going to be pollution. <br> <br> 
+                So we brought those problem to solve and then we create “ Kaewhom “ which have light weight , durable , and well absorbing.
+            </div>
+            <div class="history-pic">
+                <div class="history-pic1" data-aos="zoom-out-right">
+                    <img src="/static/mosquito.jpg" alt="">
+                </div>
+                <div class="history-pic2" data-aos="zoom-out-left">
+                    <img src="/static/glass.jpg" alt="">
+                </div>
+            </div>
+            <div class="nature">
+                <div class="text">
+                    <h1>"ECO-FRIENDLY"</h1> <br>
+                    It is an environmentally friendly product in every production process.
+                </div>
+                <div class="nature-pic" data-aos="flip-down">
+                    <img src="/static/forest.jpg" alt="">
+                </div>
+            </div>
+            
+            
+            <div class="footer">
+                <div class="term-privacy">
+                    TERMS AND CONDITIONS <br>
+                    PRIVACY POLICY <br>
+                </div>
+                <div class="address">
+                    99 Moo 18 Paholyothin Road, Klong Nueng, <br> 
+                    Klong Luang, Pathumthani 12121 Thailand. <br>
+                    Phone 091-xxxxxxx 
+                </div>
+                <div class="footer-pic">
+                  <img src="/static/qr.jpg" alt="">  
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+      AOS.init();
+    </script>
+    <script>
+        $(document).ready(function(){
+          // Add smooth scrolling to all links
+          $("a").on('click', function(event) {
+        
+            // Make sure this.hash has a value before overriding default behavior
+            if (this.hash !== "") {
+              // Prevent default anchor click behavior
+              event.preventDefault();
+        
+              // Store hash
+              var hash = this.hash;
+        
+              // Using jQuery's animate() method to add smooth page scroll
+              // The optional number (800) specifies the number of milliseconds it takes to scroll to the specified area
+              $('html, body').animate({
+                scrollTop: $(hash).offset().top
+              }, 800, function(){
+           
+                // Add hash (#) to URL when done scrolling (default click behavior)
+                window.location.hash = hash;
+              });
+            } // End if
+          });
+        });
+    </script>
+    <script type="text/javascript">
+    var counter = 1;
+    setInterval(function(){
+        document.getElementById('radio' + counter).checked = true;
+        counter++;
+        if(counter > 3){
+            counter = 1;
+        }
+    }, 6000);
+    </script>
+</body>
+</html>

@@ -1,0 +1,141 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href={% static "style.css" %}>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Rancho&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Raleway&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Qwigley&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@100&display=swap" rel="stylesheet">
+    <script src="script.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <link rel="icon" type="image/gif/png" href="/static/Cho_index/khlogo.png">
+    <title>Order Detail</title>
+</head>
+<body>
+
+    <div class="container">
+        
+        <header id="header">
+            <div class="top">
+                <div class="searchbar">
+                    <form action="{% url 'search' %}" method='get'>
+                        <input type="text" name='search' placeholder="Search" class='searchbox'>
+                        <button>Search</button>
+                    </form>
+                </div>
+                <div class="loginbar">
+                    {% if user.is_authenticated %}
+                    <li><p>Accout Name : {{user.username}}</p></li> 
+                    <li><a href= "{% url 'customerlogout' %}">Logout</a></li> 
+                    <li><a href= "{% url 'customerregistration' %}">Register</a></li> 
+                    <li><a class="addtocart" href="{% url 'mycart' %}"><img src="/static/carticon.png" alt="" width="20" height=auto></a></li>
+                    <li><a href= "{% url 'profile' %}"><img src="/static/profileicon.png" width="20" height=auto></a></li>
+                    {% else %}
+                    <div class="shopnow">
+                        <a href= "{% url 'customerlogin' %}">SHOP NOW</a>
+                    </div>
+                    {% endif %} 
+                </div>
+            </div>
+            
+            
+            <div class="Cw">
+                <a href="{% url 'index' %}"><img src="/static/Cho_index/khlogo.png"></a>
+            </div>
+        </header>  
+            
+        <nav class="navbar">
+              <ul>      
+                 <li><a class='index' href="{% url 'index' %}">Home <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span></a></li>
+                 <li><a class='navabout' href="#about">About <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span></a></li>
+                 <li><a class='allwatch' href="{% url 'category' %}">Store<span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span></a></li>
+                 <li><a class='contact' href="{% url 'contact' %}">Contact<span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span></a></li>
+                 <li><a class='fb' target="_blank" href="https://www.facebook.com/"><span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span><img src="/static/f.png"></a></li>
+                 <li><a class='ig' target="_blank" href="https://www.instagram.com/"><span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span><img src="/static/ig.png"></a></li>
+              <ul>
+        </nav>
+        <div class="main">
+            <div class="profile-grid">
+                <div class="info-detail">
+                    <div class="orderdt">
+                        Order ID : #ORDER_{{ord_obj.id}} <br>
+                        Order Status : {{ord_obj.order_status}} <br>
+                        Order on : {{ord_obj.created_at}} <br>
+                        Customer Infomation : By {{ord_obj.ordered_by}}, {{ord_obj.mobile}} <br>
+                        Shipping Address : By {{ord_obj.shipping_address}} <br>
+                    </div>
+                    
+                </div>
+                <div class="prev-order">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>SN</th>
+                                <th>Item</th>
+                                <th>Total</th>
+                                <th>Quantity</th>
+                                <th>Subtotal</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for cp in ord_obj.cart.cartwatch_set.all %}
+                            <tr>
+                                <td>{{forloop.counter}}</td>
+                                <td><a target="_blank" href="{% url 'Watch' cp.watch.id %}">{{cp.watch.brand}} {{cp.watch.model}}</a></td>
+                                <td>{{cp.price}}</td>
+                                <td>{{cp.quantity}}</td>
+                                <td>{{cp.subtotal}}</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="footer">
+                <div class="term-privacy">
+                    TERMS AND CONDITIONS <br>
+                    PRIVACY POLICY <br>
+                </div>
+                <div class="address">
+                    99 Moo 18 Paholyothin Road, Klong Nueng, <br> 
+                    Klong Luang, Pathumthani 12121 Thailand. <br>
+                    Phone 091-xxxxxxx 
+                </div>
+                <div class="footer-pic">
+                  <img src="/static/qr.jpg" alt="">  
+
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+       
